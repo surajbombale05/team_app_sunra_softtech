@@ -9,4 +9,6 @@ class AppImages {
  static const String addImgIcon = "assets/images/add-circle.png";
  static const String messageNotificationIcon = "assets/images/message-question.png";
  static const String arrowLeftIcon = "assets/images/arrow-left.png";
+ static const String tagImg = "assets/images/tag.png";
+ static const String profileUserImg = "assets/images/profile-2user.png";
 }

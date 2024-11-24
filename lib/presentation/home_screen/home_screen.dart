@@ -14,12 +14,16 @@ class HomeScreen extends StatelessWidget {
     AppImages.zigzagIconBg
   ];
 
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController projectController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print("Floating Action Button Pressed");
+          _showCreateTaskPopup(context);
         },
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -31,7 +35,7 @@ class HomeScreen extends StatelessWidget {
       ),
       appBar: AppBar(
         forceMaterialTransparency: true,
-          excludeHeaderSemantics: true,
+        excludeHeaderSemantics: true,
         automaticallyImplyLeading: false,
         toolbarHeight: 100,
         elevation: 0,
@@ -62,8 +66,12 @@ class HomeScreen extends StatelessWidget {
             ),
             const Spacer(),
             InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationScreen(),));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NotificationScreen(),
+                    ));
               },
               child: Image.asset(
                 AppImages.notificationsIcon,
@@ -91,6 +99,327 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _showCreateTaskPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const TextWidget(
+                      text: 'Create New Task',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
+                _titleWidget(),
+                _clientWidget(),
+                const SizedBoxWidget(height: 10),
+                _projectWidget(),
+                const SizedBoxWidget(
+                  height: 10,
+                ),
+                _taskDetailsWidget(),
+                
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  _taskDetailsWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextWidget(
+          text: "Task Details",
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blackColor,
+        ),
+        _assignWidget(),
+        _tagWidget(),
+      ],
+    );
+  }
+
+ _assignWidget(){
+    return Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Row(
+                children: [
+                  Image.asset(
+                    AppImages.profileUserImg,
+                    height: 12,
+                    width: 12,
+                  ),
+                  SizedBoxWidget(
+                    width: 4,
+                  ),
+                  TextWidget(
+                    text: "Assigne",
+                    color: AppColors.textGrey,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+                flex: 4,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 18,
+                          width: 18,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.lightColor),
+                          child: TextWidget(
+                            text: "+",
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.blackColor,
+                          ),
+                        ),
+                        Container(
+                          height: 12,
+                          width: 33,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.lightColor),
+                        ),
+                        
+                      ],
+                    ),
+                  ],
+                ))
+          ],
+        );
+  }
+
+ _tagWidget(){
+  return  Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Row(
+                children: [
+                  Image.asset(
+                    AppImages.tagImg,
+                    height: 12,
+                    width: 12,
+                  ),
+                  SizedBoxWidget(
+                    width: 4,
+                  ),
+                  TextWidget(
+                    text: "Tags",
+                    color: AppColors.textGrey,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+                flex: 4,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 18,
+                          width: 18,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.lightColor),
+                          child: TextWidget(
+                            text: "+",
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.blackColor,
+                          ),
+                        ),
+                        Container(
+                          height: 12,
+                          width: 33,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: AppColors.lightColor),
+                        ),
+                        
+                      ],
+                    ),
+                  ],
+                ))
+          ],
+        );
+ }
+
+  
+  _projectWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextWidget(
+          text: "Project",
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blackColor,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: DropdownButtonFormField(
+                items: const [
+                  DropdownMenuItem(
+                      value: '1', child: TextWidget(text: 'project 1')),
+                  DropdownMenuItem(
+                      value: '2', child: TextWidget(text: 'project 2')),
+                ],
+                onChanged: (value) {},
+                icon: Icon(Icons.keyboard_arrow_down),
+                decoration: const InputDecoration(
+                  hintText: 'Select Project',
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.greyColor),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBoxWidget(width: 10),
+            InkWell(
+              onTap: () {
+                print("add Project : ");
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.add),
+                  SizedBoxWidget(
+                    width: 4,
+                  ),
+                  TextWidget(
+                    text: "Add Project",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.semiDarkColor,
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  _titleWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBoxWidget(height: 20),
+        TextWidget(
+          text: "Title",
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blackColor,
+        ),
+        // SizedBoxWidget(height: 5,),
+        TextField(
+          controller: titleController,
+          decoration: const InputDecoration(
+            hintText: "Brief Project with team",
+            hintStyle: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: AppColors.textGrey),
+            border: UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.greyColor),
+            ),
+          ),
+        ),
+        const SizedBoxWidget(height: 15),
+      ],
+    );
+  }
+
+  _clientWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextWidget(
+          text: "Client",
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppColors.blackColor,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: DropdownButtonFormField(
+                items: const [
+                  DropdownMenuItem(value: '1', child: Text('Client 1')),
+                  DropdownMenuItem(value: '2', child: Text('Client 2')),
+                ],
+                onChanged: (value) {},
+                icon: Icon(Icons.keyboard_arrow_down),
+                decoration: const InputDecoration(
+                  hintText: 'Select Client',
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.greyColor),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBoxWidget(width: 10),
+            InkWell(
+              onTap: () {
+                print("add Client : ");
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.add),
+                  SizedBoxWidget(
+                    width: 4,
+                  ),
+                  TextWidget(
+                    text: "Add Client",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.semiDarkColor,
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -234,8 +563,7 @@ class HomeScreen extends StatelessWidget {
                                 color: AppColors.faintSkyColor,
                                 borderRadius: BorderRadius.circular(20)),
                             child: const Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 10.0),
+                              padding: EdgeInsets.symmetric(horizontal: 10.0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
