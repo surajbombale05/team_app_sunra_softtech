@@ -19,6 +19,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
     AppImages.splashIcon,
     AppImages.zigzagIconBg
   ];
+  
 
   List<String> status = ["Completed", "To Do", "Upcoming"];
 
