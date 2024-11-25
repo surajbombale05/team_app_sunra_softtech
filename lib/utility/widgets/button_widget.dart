@@ -27,15 +27,18 @@ class ButtonWidget extends StatelessWidget {
       this.isSuffixIcon = false,
       this.isPrefixIcon = false,
       this.iconName,
+      this.iconImg,
       this.iconColor,
       this.iconHeight,
       this.iconWidth,
+      this.showPreIcon = false,
       this.rightPaddingToIcon,
       this.distanceBetweenIconAndText});
 
   final Function onClick;
   final String text;
   final double width;
+  final bool showPreIcon;
   final double height;
   final double fontSize;
   final FontWeight? fontWeight;
@@ -58,6 +61,7 @@ class ButtonWidget extends StatelessWidget {
   final bool? isPrefixIcon;
   final double? rightPaddingToIcon;
   final double? distanceBetweenIconAndText;
+  final String? iconImg;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +76,7 @@ class ButtonWidget extends StatelessWidget {
       },
       child: Container(
         height: height,
-        width: width,
+        // width: width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
@@ -99,62 +103,77 @@ class ButtonWidget extends StatelessWidget {
           ],
         ),
         child: isInProgress
-            ? CircularProgressIndidatorWidget(
-                // context: context,
-                size: 20,
-                color: isDark
-                    ? AppColors.whiteColor
-                    : textColor ?? Theme.of(context).primaryColor,
+            ? Padding(
+                padding: EdgeInsets.symmetric(horizontal: width),
+                child: CircularProgressIndidatorWidget(
+                  // context: context,
+                  size: 20,
+                  color: isDark
+                      ? AppColors.whiteColor
+                      : textColor ?? Theme.of(context).primaryColor,
+                ),
               )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // isPrefixIcon == true
-                  //     ? Padding(
-                  //         padding: EdgeInsets.only(right: 8.0.w),
-                  //         child: IconWidget(
-                  //           data: iconName ?? "",
-                  //           color: iconColor,
-                  //           height: iconHeight ?? 18.h,
-                  //           width: iconWidth ?? 18.w
-                  //         ),
-                  //       )
-                  //     : const SizedBoxWidget(
-                  //         height: 1,
-                  //         width: 1,
-                  //       ),
-                  Padding(
-                    padding:const 
-                        EdgeInsets.symmetric(horizontal: 1, vertical: 1),
-                    child: TextWidget(
-                      text: text,
-                      textAlign: TextAlign.center,
-                      color: isDark
-                          ? AppColors.whiteColor
-                          : textColor ?? Theme.of(context).primaryColor,
-                      fontSize: fontSize,
-                      fontWeight: fontWeight,
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: width),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // isPrefixIcon == true
+                    //     ? Padding(
+                    //         padding: EdgeInsets.only(right: 8.0.w),
+                    //         child: IconWidget(
+                    //           data: iconName ?? "",
+                    //           color: iconColor,
+                    //           height: iconHeight ?? 18.h,
+                    //           width: iconWidth ?? 18.w
+                    //         ),
+                    //       )
+                    //     : const SizedBoxWidget(
+                    //         height: 1,
+                    //         width: 1,
+                    //       ),
+                    showPreIcon
+                        ? Image.asset(
+                            iconImg ?? 'assets/images/tick-circle.png')
+                        : SizedBox.shrink(),
+                    showPreIcon
+                        ? SizedBoxWidget(
+                            width: 5,
+                          )
+                        : SizedBox.shrink(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 1, vertical: 1),
+                      child: TextWidget(
+                        text: text,
+                        textAlign: TextAlign.center,
+                        color: isDark
+                            ? AppColors.whiteColor
+                            : textColor ?? Theme.of(context).primaryColor,
+                        fontSize: fontSize,
+                        fontWeight: fontWeight,
+                      ),
                     ),
-                  ),
-                  SizedBoxWidget(
-                    width: distanceBetweenIconAndText ?? 2,
-                  ),
-                  // isSuffixIcon == true
-                  //     ? Padding(
-                  //         padding: EdgeInsets.only(
-                  //             right: rightPaddingToIcon ?? 0.0.w),
-                  //         child: IconWidget(
-                  //           data: iconName ?? "",
-                  //           color: iconColor,
-                  //           height: iconHeight ?? 18.h,
-                  //           width: iconWidth ?? 18.w
-                  //         ),
-                  //       )
-                  //     : const SizedBoxWidget(
-                  //         height: 1,
-                  //         width: 1,
-                  //       ),
-                ],
+                    SizedBoxWidget(
+                      width: distanceBetweenIconAndText ?? 2,
+                    ),
+                    // isSuffixIcon == true
+                    //     ? Padding(
+                    //         padding: EdgeInsets.only(
+                    //             right: rightPaddingToIcon ?? 0.0.w),
+                    //         child: IconWidget(
+                    //           data: iconName ?? "",
+                    //           color: iconColor,
+                    //           height: iconHeight ?? 18.h,
+                    //           width: iconWidth ?? 18.w
+                    //         ),
+                    //       )
+                    //     : const SizedBoxWidget(
+                    //         height: 1,
+                    //         width: 1,
+                    //       ),
+                  ],
+                ),
               ),
       ),
     );

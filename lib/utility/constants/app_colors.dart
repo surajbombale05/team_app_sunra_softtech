@@ -70,7 +70,8 @@ class AppColors {
   static const Color activeColor = Color(0xFF262626);
   static const Color faintRedColor = Color(0xFFFF5C5F);
   static const Color faintSkyColor = Color(0xFF54BBFF);
-  // static const Color semiDarkColor1 = Color(0xFF4D4D50);
-  
+  static const Color faintGrayTextColor = Color(0xFF948A8A);
+  static const Color successColor = Color(0xFF36C252);
+  // static const Color faintRedColor = Color(#FF5C5F);
 
 }

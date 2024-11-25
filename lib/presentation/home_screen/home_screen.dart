@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:team_app/presentation/notification_screen/notification_screen.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
 import 'package:team_app/utility/constants/app_images.dart';
+import 'package:team_app/utility/widgets/add_task_widget.dart';
 import 'package:team_app/utility/widgets/button_widget.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
 import 'package:team_app/utility/widgets/text_widget.dart';
+
+import '../task_list_screen/task_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -22,8 +25,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print("Floating Action Button Pressed");
-          _showCreateTaskPopup(context);
+           TaskPopup.showCreateTaskPopup(context);
         },
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -94,7 +96,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBoxWidget(
                 height: 20,
               ),
-              _taskListWidget(),
+              _taskListWidget(context),
             ],
           ),
         ),
@@ -102,7 +104,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void _showCreateTaskPopup(BuildContext context) {
+  void showCreateTaskPopup(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -137,8 +139,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBoxWidget(
                   height: 10,
                 ),
-                _taskDetailsWidget(),
-                
+                _taskDetailsWidget(),                
               ],
             ),
           ),
@@ -151,7 +152,7 @@ class HomeScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextWidget(
+        const TextWidget(
           text: "Task Details",
           fontSize: 14,
           fontWeight: FontWeight.w500,
@@ -175,10 +176,10 @@ class HomeScreen extends StatelessWidget {
                     height: 12,
                     width: 12,
                   ),
-                  SizedBoxWidget(
+                  const SizedBoxWidget(
                     width: 4,
                   ),
-                  TextWidget(
+                  const TextWidget(
                     text: "Assigne",
                     color: AppColors.textGrey,
                     fontSize: 12,
@@ -199,7 +200,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: AppColors.lightColor),
-                          child: TextWidget(
+                          child: const TextWidget(
                             text: "+",
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
@@ -222,6 +223,9 @@ class HomeScreen extends StatelessWidget {
         );
   }
 
+
+
+
  _tagWidget(){
   return  Row(
           children: [
@@ -234,10 +238,10 @@ class HomeScreen extends StatelessWidget {
                     height: 12,
                     width: 12,
                   ),
-                  SizedBoxWidget(
+                  const SizedBoxWidget(
                     width: 4,
                   ),
-                  TextWidget(
+                  const TextWidget(
                     text: "Tags",
                     color: AppColors.textGrey,
                     fontSize: 12,
@@ -258,7 +262,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: AppColors.lightColor),
-                          child: TextWidget(
+                          child: const TextWidget(
                             text: "+",
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
@@ -282,11 +286,11 @@ class HomeScreen extends StatelessWidget {
  }
 
   
-  _projectWidget() {
+ static Widget _projectWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextWidget(
+        const TextWidget(
           text: "Project",
           fontSize: 14,
           fontWeight: FontWeight.w500,
@@ -303,7 +307,7 @@ class HomeScreen extends StatelessWidget {
                       value: '2', child: TextWidget(text: 'project 2')),
                 ],
                 onChanged: (value) {},
-                icon: Icon(Icons.keyboard_arrow_down),
+                icon: const Icon(Icons.keyboard_arrow_down),
                 decoration: const InputDecoration(
                   hintText: 'Select Project',
                   border: UnderlineInputBorder(
@@ -315,9 +319,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBoxWidget(width: 10),
             InkWell(
               onTap: () {
-                print("add Project : ");
               },
-              child: Row(
+              child: const Row(
                 children: [
                   Icon(Icons.add),
                   SizedBoxWidget(
@@ -343,7 +346,7 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBoxWidget(height: 20),
-        TextWidget(
+        const TextWidget(
           text: "Title",
           fontSize: 14,
           fontWeight: FontWeight.w500,
@@ -373,7 +376,7 @@ class HomeScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextWidget(
+        const TextWidget(
           text: "Client",
           fontSize: 14,
           fontWeight: FontWeight.w500,
@@ -388,7 +391,7 @@ class HomeScreen extends StatelessWidget {
                   DropdownMenuItem(value: '2', child: Text('Client 2')),
                 ],
                 onChanged: (value) {},
-                icon: Icon(Icons.keyboard_arrow_down),
+                icon: const Icon(Icons.keyboard_arrow_down),
                 decoration: const InputDecoration(
                   hintText: 'Select Client',
                   border: UnderlineInputBorder(
@@ -400,9 +403,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBoxWidget(width: 10),
             InkWell(
               onTap: () {
-                print("add Client : ");
               },
-              child: Row(
+              child: const Row(
                 children: [
                   Icon(Icons.add),
                   SizedBoxWidget(
@@ -496,7 +498,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  _taskListWidget() {
+  _taskListWidget(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -526,11 +528,17 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            const TextWidget(
-              text: "View All",
-              fontSize: 10,
-              fontWeight: FontWeight.w500,
-              color: AppColors.primarySkyColor,
+            InkWell
+            (
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>TaskListScreen() ,));
+              },
+              child: const TextWidget(
+                text: "View All",
+                fontSize: 10,
+                fontWeight: FontWeight.w500,
+                color: AppColors.primarySkyColor,
+              ),
             )
           ],
         ),
@@ -643,7 +651,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   _clientImgStackWidget() {
-    return SizedBox(
+    return SizedBoxWidget(
       height: 40,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

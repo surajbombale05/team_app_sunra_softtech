@@ -11,4 +11,7 @@ class AppImages {
  static const String arrowLeftIcon = "assets/images/arrow-left.png";
  static const String tagImg = "assets/images/tag.png";
  static const String profileUserImg = "assets/images/profile-2user.png";
+ static const String tickCircleImg = "assets/images/tick-circle.png";
+ static const String calendarIconImg = "assets/images/calendar.png";
+ static const String alertImg = "assets/images/alert_img.png";
 }
