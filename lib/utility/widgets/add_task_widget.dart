@@ -1,11 +1,13 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
 import 'package:team_app/utility/constants/app_images.dart';
+import 'package:team_app/utility/widgets/Text_form_field_label.dart';
+import 'package:team_app/utility/widgets/button_widget.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
 import 'package:team_app/utility/widgets/text_widget.dart';
 
 class TaskPopup {
-   static TextEditingController titleController = TextEditingController();
+  static TextEditingController titleController = TextEditingController();
   static void showCreateTaskPopup(BuildContext context) {
     showDialog(
       context: context,
@@ -35,7 +37,7 @@ class TaskPopup {
                   ],
                 ),
                 _titleWidget(),
-                _clientWidget(),
+                _clientWidget(context),
                 const SizedBoxWidget(height: 10),
                 _projectWidget(),
                 const SizedBoxWidget(
@@ -49,8 +51,8 @@ class TaskPopup {
       },
     );
   }
- 
-static _taskDetailsWidget() {
+
+  static _taskDetailsWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -66,125 +68,123 @@ static _taskDetailsWidget() {
     );
   }
 
- static _assignWidget(){
+  static _assignWidget() {
     return Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Row(
-                children: [
-                  Image.asset(
-                    AppImages.profileUserImg,
-                    height: 12,
-                    width: 12,
-                  ),
-                  const SizedBoxWidget(
-                    width: 4,
-                  ),
-                  const TextWidget(
-                    text: "Assigne",
-                    color: AppColors.textGrey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
+      children: [
+        Expanded(
+          flex: 2,
+          child: Row(
+            children: [
+              Image.asset(
+                AppImages.profileUserImg,
+                height: 12,
+                width: 12,
               ),
-            ),
-            Expanded(
-                flex: 4,
-                child: Column(
+              const SizedBoxWidget(
+                width: 4,
+              ),
+              const TextWidget(
+                text: "Assigne",
+                color: AppColors.textGrey,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+            flex: 4,
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                          child: const TextWidget(
-                            text: "+",
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor,
-                          ),
-                        ),
-                        Container(
-                          height: 12,
-                          width: 33,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                        ),
-                        
-                      ],
+                    Container(
+                      height: 18,
+                      width: 18,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
+                      child: const TextWidget(
+                        text: "+",
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+                    Container(
+                      height: 12,
+                      width: 33,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
                     ),
                   ],
-                ))
-          ],
-        );
+                ),
+              ],
+            ))
+      ],
+    );
   }
 
- static _tagWidget(){
-  return  Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Row(
-                children: [
-                  Image.asset(
-                    AppImages.tagImg,
-                    height: 12,
-                    width: 12,
-                  ),
-                  const SizedBoxWidget(
-                    width: 4,
-                  ),
-                  const TextWidget(
-                    text: "Tags",
-                    color: AppColors.textGrey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
+  static _tagWidget() {
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: Row(
+            children: [
+              Image.asset(
+                AppImages.tagImg,
+                height: 12,
+                width: 12,
               ),
-            ),
-            Expanded(
-                flex: 4,
-                child: Column(
+              const SizedBoxWidget(
+                width: 4,
+              ),
+              const TextWidget(
+                text: "Tags",
+                color: AppColors.textGrey,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+            flex: 4,
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                          child: const TextWidget(
-                            text: "+",
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor,
-                          ),
-                        ),
-                        Container(
-                          height: 12,
-                          width: 33,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                        ),
-                        
-                      ],
+                    Container(
+                      height: 18,
+                      width: 18,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
+                      child: const TextWidget(
+                        text: "+",
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+                    Container(
+                      height: 12,
+                      width: 33,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
                     ),
                   ],
-                ))
-          ],
-        );
- }
+                ),
+              ],
+            ))
+      ],
+    );
+  }
 
-static Widget _projectWidget() {
+  static Widget _projectWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -240,7 +240,7 @@ static Widget _projectWidget() {
     );
   }
 
-static _titleWidget() {
+  static _titleWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -271,7 +271,7 @@ static _titleWidget() {
     );
   }
 
-  static _clientWidget() {
+  static _clientWidget(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -302,7 +302,7 @@ static _titleWidget() {
             const SizedBoxWidget(width: 10),
             InkWell(
               onTap: () {
-                print("add Client : ");
+                addClientWidget(context);
               },
               child: const Row(
                 children: [
@@ -322,6 +322,164 @@ static _titleWidget() {
           ],
         ),
       ],
+    );
+  }
+
+  static void addClientWidget(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const TextWidget(
+                      text: 'Add Client',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Client Name",
+                  hintText: "Name of the client",
+                ),
+                const SizedBoxWidget(
+                  height: 7,
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Mobile no.",
+                  hintText: "+ 91 8346493475",
+                ),
+                const SizedBoxWidget(
+                  height: 7,
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Email",
+                  hintText: "user@email.com",
+                ),
+                const SizedBoxWidget(
+                  height: 7,
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Address",
+                  hintText: "address here",
+                ),
+                const SizedBoxWidget(
+                  height: 17,
+                ),
+                ButtonWidget(
+                  onClick: () {},
+                  text: "Add Client",
+                  backgroundColor: AppColors.darkColor,
+                  textColor: AppColors.lightColor,
+                  borderRadius: 30,
+                  width: 10,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  height: 44,
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  static void addProjectWidget(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const TextWidget(
+                      text: 'Add Client',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Client Name",
+                  hintText: "Name of the client",
+                ),
+                const SizedBoxWidget(
+                  height: 7,
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Mobile no.",
+                  hintText: "+ 91 8346493475",
+                ),
+                const SizedBoxWidget(
+                  height: 7,
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Email",
+                  hintText: "user@email.com",
+                ),
+                const SizedBoxWidget(
+                  height: 7,
+                ),
+                TextFormFieldLabel(
+                  controller: TextEditingController(),
+                  headingText: "Address",
+                  hintText: "address here",
+                ),
+                const SizedBoxWidget(
+                  height: 17,
+                ),
+                ButtonWidget(
+                  onClick: () {},
+                  text: "Add Client",
+                  backgroundColor: AppColors.darkColor,
+                  textColor: AppColors.lightColor,
+                  borderRadius: 30,
+                  width: 10,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  height: 44,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

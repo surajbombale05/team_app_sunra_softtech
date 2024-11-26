@@ -226,7 +226,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.more_horiz),
+                        icon: const Icon(Icons.more_horiz,),
                         onPressed: () {
                           // show options popup
                           _showOptionsPopup(context);
@@ -282,6 +282,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
                   height: 12,
                 ),
                 _optionsButtonWidgets(),
+                const SizedBoxWidget(
+                  height: 12,
+                ),
               ],
             ),
           ),
