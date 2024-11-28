@@ -3,6 +3,7 @@ import 'package:team_app/presentation/drawer_view/widgets/client_detail_view_wid
 import 'package:team_app/presentation/drawer_view/widgets/closed_deal_widget.dart';
 import 'package:team_app/presentation/drawer_view/widgets/dashboard_view.dart';
 import 'package:team_app/presentation/drawer_view/widgets/lead_conversation.dart';
+import 'package:team_app/presentation/drawer_view/widgets/send_quatation_widget.dart';
 import 'package:team_app/presentation/drawer_view/widgets/user_list_widget.dart';
 import 'package:team_app/presentation/notification_screen/notification_screen.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
@@ -57,7 +58,7 @@ class DrawerViewScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: ClientDetailViewWidget(),
+      body: SendQuatationWidget(),
     );
   }
 

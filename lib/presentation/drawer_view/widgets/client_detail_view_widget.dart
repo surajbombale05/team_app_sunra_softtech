@@ -96,14 +96,12 @@ class ClientDetailViewWidget extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    decoration:
-                        BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.editEventFeildColor),
-                          
-
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColors.editEventFeildColor),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical:8.0, horizontal: 12),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 12),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -113,45 +111,44 @@ class ClientDetailViewWidget extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: AppColors.semiDarkColor,
                           ),
-                           TextWidget(
+                          TextWidget(
                             text: "₹ 67,000",
                             fontSize: 24,
                             fontWeight: FontWeight.w800,
                             color: AppColors.faintRedColor,
                           ),
-                      
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBoxWidget(width: 15,),
+                SizedBoxWidget(
+                  width: 15,
+                ),
                 Expanded(
                   flex: 2,
                   child: Container(
-                    decoration:
-                        BoxDecoration(
-                          color: AppColors.successColor.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(10)
-                          ),
+                    decoration: BoxDecoration(
+                        color: AppColors.successColor.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10)),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical:8.0, horizontal: 12),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 12),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextWidget(
-                            text: "Paid" ,
+                            text: "Paid",
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
                             color: AppColors.semiDarkColor,
                           ),
-                           TextWidget(
+                          TextWidget(
                             text: "₹ 2,77,000",
                             fontSize: 24,
                             fontWeight: FontWeight.w800,
                             color: AppColors.successColor,
                           ),
-                      
                         ],
                       ),
                     ),
@@ -159,7 +156,16 @@ class ClientDetailViewWidget extends StatelessWidget {
                 )
               ],
             ),
-            TextWidget(text: "Projects")
+            TextWidget(
+              text: "Projects",
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.darkColor,
+            ),
+            SizedBoxWidget(
+              height: 10,
+            ),
+            
           ],
         ),
       ),
