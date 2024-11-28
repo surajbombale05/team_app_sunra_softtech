@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_app/presentation/drawer_view/drawer_view.dart';
 import 'package:team_app/presentation/notification_screen/notification_screen.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
 import 'package:team_app/utility/constants/app_images.dart';
@@ -92,7 +93,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBoxWidget(
                 height: 15,
               ),
-              _dataViewWidget(),
+              _dataViewWidget(context),
               const SizedBoxWidget(
                 height: 20,
               ),
@@ -425,7 +426,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  _dataViewWidget() {
+  _dataViewWidget(BuildContext context) {
     return Row(
       children: [
         Expanded(
@@ -460,37 +461,42 @@ class HomeScreen extends StatelessWidget {
         ),
         Expanded(
           flex: 3,
-          child: Container(
-            height: 163,
-            decoration: BoxDecoration(
-                color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(20)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const TextWidget(
-                      text: "Go to",
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textGreyColor,
-                    ),
-                    const SizedBoxWidget(
-                      width: 5,
-                    ),
-                    Image.asset(AppImages.rightArrowImg)
-                  ],
-                ),
-                const TextWidget(
-                  text: "Dashboard",
-                  color: AppColors.activeColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                )
-              ],
+          child: InkWell(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DrawerViewScreen(),));
+            },
+            child: Container(
+              height: 163,
+              decoration: BoxDecoration(
+                  color: AppColors.whiteColor,
+                  borderRadius: BorderRadius.circular(20)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const TextWidget(
+                        text: "Go to",
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.textGreyColor,
+                      ),
+                      const SizedBoxWidget(
+                        width: 5,
+                      ),
+                      Image.asset(AppImages.rightArrowImg)
+                    ],
+                  ),
+                  const TextWidget(
+                    text: "Dashboard",
+                    color: AppColors.activeColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -601,7 +607,7 @@ class HomeScreen extends StatelessWidget {
                             backgroundColor: AppColors.faintRedColor,
                             textColor: AppColors.lightColor,
                             height: 23,
-                            width: 65,
+                            width: 5,
                             borderRadius: 20,
                           ),
                           const Spacer(),

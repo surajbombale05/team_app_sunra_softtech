@@ -4,6 +4,7 @@ import 'package:team_app/presentation/notification_screen/detail_notification_sc
 import 'package:team_app/presentation/notification_screen/notification_screen.dart';
 import 'package:team_app/presentation/splash_screen/splash_screen.dart';
 
+import 'presentation/drawer_view/drawer_view.dart';
 import 'presentation/task_list_screen/task_list_screen.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: TaskListScreen(),
+      home: DrawerViewScreen(),
     );
   }
 }

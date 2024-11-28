@@ -19,7 +19,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
     AppImages.splashIcon,
     AppImages.zigzagIconBg
   ];
-  
 
   List<String> status = ["Completed", "To Do", "Upcoming"];
 
@@ -35,23 +34,28 @@ class _TaskListScreenState extends State<TaskListScreen> {
   ];
 
   List<String> priotory = ["Low", "Mid", "High"];
+  final List<String> imageUrls = [
+    'https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1691141573071-e71dc8ec2876?q=80&w=1533&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton:  FloatingActionButton(
-        onPressed: () {
-          TaskPopup.showCreateTaskPopup(context);
-        },
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 24,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            TaskPopup.showCreateTaskPopup(context);
+          },
+          backgroundColor: Colors.black,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 24,
+          ),
         ),
-      ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 20),
           child: Column(
@@ -218,7 +222,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                       const SizedBoxWidget(
                         height: 10,
                       ),
-                      // _dateAndPeopleWidget()
+                      _dateAndPeopleWidget()
                     ],
                   ),
                   Column(
@@ -226,13 +230,51 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.more_horiz,),
+                        icon: const Icon(
+                          Icons.more_horiz,
+                        ),
                         onPressed: () {
-                          // show options popup
                           _showOptionsPopup(context);
                         },
                       ),
-                      const Text("STACK WIDGET"),
+                      // ignore: prefer_const_constructors
+                      SizedBoxWidget(
+                        height: 30,
+                      ),
+                      SizedBoxWidget(
+                        width: 80,
+                        height: 28,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              left: 0,
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundImage: NetworkImage(imageUrls[0]),
+                              ),
+                            ),
+                            Positioned(
+                              left: 20,
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundImage: NetworkImage(imageUrls[1]),
+                              ),
+                            ),
+                            Positioned(
+                              left: 40,
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundColor: Colors.grey.shade300,
+                                child: const Text(
+                                  '+2',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    
                     ],
                   ),
                 ],
@@ -243,6 +285,54 @@ class _TaskListScreenState extends State<TaskListScreen> {
       ),
     );
   }
+
+  // _clientImgStackWidget() {
+  //   return SizedBoxWidget(
+  //     height: 40,
+  //     child: ListView.builder(
+  //       scrollDirection: Axis.horizontal,
+  //       itemCount: profileImages.length + 1,
+  //       itemBuilder: (context, index) {
+  //         if (index < profileImages.length) {
+  //           return SizedBox(
+  //             width: 30, // Width for each Stack item
+  //             child: Stack(
+  //               clipBehavior: Clip.none, // Allow overlap
+  //               children: [
+  //                 Positioned(
+  //                   left: index * 10.0, // Adjust the overlap amount
+  //                   child: CircleAvatar(
+  //                     radius: 30,
+  //                     backgroundImage: NetworkImage(profileImages[index]),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           );
+  //         } else {
+  //           // Display the Add Icon
+  //           return Padding(
+  //             padding: EdgeInsets.only(left: profileImages.length * 10.0),
+  //             child: GestureDetector(
+  //                 onTap: () {
+  //                   // Handle Add action
+  //                   print("Add icon tapped!");
+  //                 },
+  //                 child: Container(
+  //                   height: 60,
+  //                   width: 60,
+  //                   decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.circular(30),
+  //                     color: AppColors.lightColor,
+  //                   ),
+  //                   child: Image.asset(AppImages.addImgIcon),
+  //                 )),
+  //           );
+  //         }
+  //       },
+  //     ),
+  //   );
+  // }
 
   void _showOptionsPopup(BuildContext context) {
     showDialog(
@@ -460,7 +550,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                     //_deleteTask();
                   },
@@ -548,70 +638,21 @@ class _TaskListScreenState extends State<TaskListScreen> {
 
   _dateAndPeopleWidget() {
     return Row(
-      //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          child: Row(
-            children: [
-              Image.asset(AppImages.calendarIconImg),
-              const SizedBoxWidget(
-                width: 8,
-              ),
-              const TextWidget(
-                text: "14 Nov 2024",
-                fontSize: 11,
-                fontWeight: FontWeight.w400,
-                color: AppColors.blackColor,
-              ),
-            ],
-          ),
+        Row(
+          children: [
+            Image.asset(AppImages.calendarIconImg),
+            const SizedBoxWidget(
+              width: 8,
+            ),
+            const TextWidget(
+              text: "14 Nov 2024",
+              fontSize: 11,
+              fontWeight: FontWeight.w400,
+              color: AppColors.blackColor,
+            ),
+          ],
         ),
-        SizedBoxWidget(
-          height: 27,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: profileImages.length + 1,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              if (index < profileImages.length) {
-                return Container(
-                  width: 22, // Width for each Stack item
-                  child: Stack(
-                    clipBehavior: Clip.none, // Allow overlap
-                    children: [
-                      Positioned(
-                        left: index * 10.0, // Adjust the overlap amount
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(profileImages[index]),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              } else {
-                // Display the Add Icon
-                return Padding(
-                  padding: EdgeInsets.only(left: profileImages.length * 10.0),
-                  child: GestureDetector(
-                      onTap: () {
-                        // Handle Add action
-                        print("Add icon tapped!");
-                      },
-                      child: Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: AppColors.lightColor,
-                        ),
-                        child: Image.asset(AppImages.addImgIcon),
-                      )),
-                );
-              }
-            },
-          ),
-        )
       ],
     );
   }

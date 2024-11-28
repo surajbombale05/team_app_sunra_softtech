@@ -5,9 +5,19 @@ import 'package:team_app/utility/widgets/Text_form_field_label.dart';
 import 'package:team_app/utility/widgets/button_widget.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
 import 'package:team_app/utility/widgets/text_widget.dart';
+import 'package:team_app/utility/widgets/underline_dropdown_widget.dart';
 
 class TaskPopup {
   static TextEditingController titleController = TextEditingController();
+
+  static String selectedClient = "Select Client";
+  static List<String> clients = [
+    "Select Client",
+    "Client A",
+    "Client B",
+    "Client C"
+  ];
+
   static void showCreateTaskPopup(BuildContext context) {
     showDialog(
       context: context,
@@ -39,7 +49,7 @@ class TaskPopup {
                 _titleWidget(),
                 _clientWidget(context),
                 const SizedBoxWidget(height: 10),
-                _projectWidget(),
+                _projectWidget(context),
                 const SizedBoxWidget(
                   height: 10,
                 ),
@@ -62,8 +72,18 @@ class TaskPopup {
           fontWeight: FontWeight.w500,
           color: AppColors.blackColor,
         ),
+        SizedBoxWidget(
+          height: 11,
+        ),
         _assignWidget(),
+        SizedBoxWidget(
+          height: 12,
+        ),
         _tagWidget(),
+        SizedBoxWidget(
+          height: 12,
+        ),
+        _saveTaskButtonWidget(),
       ],
     );
   }
@@ -77,8 +97,8 @@ class TaskPopup {
             children: [
               Image.asset(
                 AppImages.profileUserImg,
-                height: 12,
-                width: 12,
+                height: 13,
+                width: 13,
               ),
               const SizedBoxWidget(
                 width: 4,
@@ -86,7 +106,7 @@ class TaskPopup {
               const TextWidget(
                 text: "Assigne",
                 color: AppColors.textGrey,
-                fontSize: 12,
+                fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
             ],
@@ -99,25 +119,26 @@ class TaskPopup {
                 Row(
                   children: [
                     Container(
-                      height: 18,
-                      width: 18,
+                      height: 22,
+                      width: 22,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: AppColors.lightColor),
-                      child: const TextWidget(
-                        text: "+",
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.blackColor,
+                          color: const Color.fromARGB(255, 233, 227, 227)),
+                      child: const Center(
+                        child: TextWidget(
+                          text: "+",
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.blackColor,
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 12,
-                      width: 33,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: AppColors.lightColor),
-                    ),
+                    //  ButtonWidget(onClick: (){
+
+                    //  }, text: "ASSINER Name",
+                    //  width: 2,
+
+                    //  )
                   ],
                 ),
               ],
@@ -157,25 +178,27 @@ class TaskPopup {
                 Row(
                   children: [
                     Container(
-                      height: 18,
-                      width: 18,
+                      height: 22,
+                      width: 22,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: AppColors.lightColor),
-                      child: const TextWidget(
-                        text: "+",
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.blackColor,
+                          color: const Color.fromARGB(255, 233, 227, 227)),
+                      child: const Center(
+                        child: TextWidget(
+                          text: "+",
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.blackColor,
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 12,
-                      width: 33,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: AppColors.lightColor),
-                    ),
+                    // Container(
+                    //   height: 12,
+                    //   width: 33,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(30),
+                    //       color: AppColors.lightColor),
+                    // ),
                   ],
                 ),
               ],
@@ -184,7 +207,16 @@ class TaskPopup {
     );
   }
 
-  static Widget _projectWidget() {
+ static  _saveTaskButtonWidget() {
+    return ButtonWidget(
+      isDark:true,
+      height: 44,
+      textColor: AppColors.whiteColor,
+      borderRadius: 30,
+      onClick: () {}, text: "Save Task");
+  }
+
+  static Widget _projectWidget(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -217,7 +249,7 @@ class TaskPopup {
             const SizedBoxWidget(width: 10),
             InkWell(
               onTap: () {
-                print("add Project : ");
+                addProjectWidget(context);
               },
               child: const Row(
                 children: [
@@ -422,7 +454,7 @@ class TaskPopup {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const TextWidget(
-                      text: 'Add Client',
+                      text: 'Add Project',
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -434,39 +466,30 @@ class TaskPopup {
                 ),
                 TextFormFieldLabel(
                   controller: TextEditingController(),
-                  headingText: "Client Name",
-                  hintText: "Name of the client",
+                  headingText: "Project Name",
+                  hintText: "Name of the project",
                 ),
                 const SizedBoxWidget(
                   height: 7,
                 ),
-                TextFormFieldLabel(
-                  controller: TextEditingController(),
-                  headingText: "Mobile no.",
-                  hintText: "+ 91 8346493475",
+                // client dropdown
+                UnderlineDropdown(
+                  label: "Client",
+                  items: clients,
+                  selectedItem: selectedClient,
+                  onChanged: (value) {
+                    //     setState(() {
+                    //    selectedClient = value!;
+                    // });
+                  },
                 ),
-                const SizedBoxWidget(
-                  height: 7,
-                ),
-                TextFormFieldLabel(
-                  controller: TextEditingController(),
-                  headingText: "Email",
-                  hintText: "user@email.com",
-                ),
-                const SizedBoxWidget(
-                  height: 7,
-                ),
-                TextFormFieldLabel(
-                  controller: TextEditingController(),
-                  headingText: "Address",
-                  hintText: "address here",
-                ),
+
                 const SizedBoxWidget(
                   height: 17,
                 ),
                 ButtonWidget(
                   onClick: () {},
-                  text: "Add Client",
+                  text: "Add Project",
                   backgroundColor: AppColors.darkColor,
                   textColor: AppColors.lightColor,
                   borderRadius: 30,
@@ -475,6 +498,9 @@ class TaskPopup {
                   fontWeight: FontWeight.w500,
                   height: 44,
                 ),
+                SizedBoxWidget(
+                  height: 10,
+                )
               ],
             ),
           ),

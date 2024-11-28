@@ -40,16 +40,19 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
           const SizedBoxWidget(height: 35,),
-          ButtonWidget(
-            textColor: AppColors.lightColor,
-            onClick: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
-          },
-          backgroundColor: AppColors.darkColor,
-          borderRadius: 40,
-          height: 44,
-          width: 303,
-           text: "Get Started")
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ButtonWidget(
+              textColor: AppColors.lightColor,
+              onClick: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+            },
+            backgroundColor: AppColors.darkColor,
+            borderRadius: 40,
+            height: 44,
+            // width: 303,
+             text: "Get Started"),
+          )
         ],
       ),
     );

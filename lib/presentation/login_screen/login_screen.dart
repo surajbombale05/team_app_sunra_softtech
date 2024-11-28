@@ -92,8 +92,10 @@ class LoginScreen extends StatelessWidget {
         ),
         TextField(
           controller:passwordController,
+          
           decoration: const InputDecoration(
-            hintText: "Your Password",
+            suffixIcon: Icon(Icons.remove_red_eye),
+                        hintText: "Your Password",
             hintStyle: TextStyle(
                 fontFamily: 'Poppins', fontSize: 12, color: AppColors.textGrey),
             border: UnderlineInputBorder(
@@ -108,6 +110,7 @@ class LoginScreen extends StatelessWidget {
           alignment: Alignment.center,
           child: ButtonWidget(
               textColor: AppColors.lightColor,
+              isDark: true,
               onClick: () {
                 Navigator.push(
                     context,
@@ -118,7 +121,8 @@ class LoginScreen extends StatelessWidget {
               backgroundColor: AppColors.darkColor,
               borderRadius: 40,
               height: 44,
-              width: 303,
+              
+              // width: 303,
               text: "Login"),
         )
       ]),

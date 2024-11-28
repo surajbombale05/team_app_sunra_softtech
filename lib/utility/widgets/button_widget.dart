@@ -83,7 +83,7 @@ class ButtonWidget extends StatelessWidget {
             Radius.circular(borderRadius),
           ),
           color: isDark
-              ? Theme.of(context).primaryColor
+              ? AppColors.darkColor
               : isTransparentColor
                   ? Colors.transparent
                   : backgroundColor ?? AppColors.whiteColor,

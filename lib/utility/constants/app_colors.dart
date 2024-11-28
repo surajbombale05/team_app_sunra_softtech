@@ -73,5 +73,6 @@ class AppColors {
   static const Color faintGrayTextColor = Color(0xFF948A8A);
   static const Color successColor = Color(0xFF36C252);
   // static const Color faintRedColor = Color(#FF5C5F);
-
+  static const Color orangeColor = Color(0xFFFE9E02);
+  static const Color faintGreenColor = Color(0xFF5CDA3F);
 }
