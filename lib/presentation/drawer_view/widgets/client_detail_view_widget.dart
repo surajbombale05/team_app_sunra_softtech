@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
+import 'package:team_app/utility/constants/app_images.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
 import 'package:team_app/utility/widgets/text_widget.dart';
 
@@ -156,6 +157,9 @@ class ClientDetailViewWidget extends StatelessWidget {
                 )
               ],
             ),
+            SizedBoxWidget(
+              height: 20,
+            ),
             TextWidget(
               text: "Projects",
               fontSize: 16,
@@ -165,7 +169,67 @@ class ClientDetailViewWidget extends StatelessWidget {
             SizedBoxWidget(
               height: 10,
             ),
-            
+            Expanded(
+              child: GridView.builder(
+                itemCount: 4,
+                // physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                         color: AppColors.whiteColor,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                                    ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical:12.0 , horizontal: 8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextWidget(
+                                  text: "Project 1",
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.darkColor,
+                                ),
+                                Image.asset(AppImages.rightArrowImg, height: 17,),
+                              ],
+                            ),
+                            TextWidget(
+                              text:
+                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                              fontSize: 10,
+                              fontWeight: FontWeight.w300,
+                              color: AppColors.greyColor,
+                            ),
+                            TextWidget(
+                              text: "Category",
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.semiDarkColor,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
@@ -184,7 +248,7 @@ class ClientDetailViewWidget extends StatelessWidget {
               color: AppColors.greyColor,
             )),
         Expanded(
-            flex: 3,
+            flex: 7,
             child: TextWidget(
               text: value,
               fontSize: 10,

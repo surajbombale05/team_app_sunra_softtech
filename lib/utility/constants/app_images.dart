@@ -37,4 +37,9 @@ class AppImages {
  static const String copyIcon = "assets/images/copy.png";
 
  static const String clockIcon = "assets/images/clock.png";
+ static const String recordCircle = "assets/images/record-circle.png";
+ static const String downloadIcon = "assets/images/download.png";
+
+ static const String pdfImg = "assets/images/Convert_PDF.png";
+
 }
