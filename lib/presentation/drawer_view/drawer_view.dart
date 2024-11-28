@@ -58,7 +58,7 @@ class DrawerViewScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: ProjectDetailViewWidget(),
+      body: ClientDetailViewWidget(),
     );
   }
 
