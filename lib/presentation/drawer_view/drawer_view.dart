@@ -27,8 +27,6 @@ class DrawerViewScreen extends StatelessWidget {
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 
-  // String drawerButton = "dashboard";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +67,6 @@ class DrawerViewScreen extends StatelessWidget {
           }
         ),
       ),
-      // body: ProjectDetailViewWidget(),
       body: BlocBuilder<TabCubit, TabState>(
         builder: (context, state) {
           if (state is TabInitial) {

@@ -269,7 +269,9 @@ class ProjectDetailViewWidget extends StatelessWidget {
                 SizedBoxWidget(
                   height: 10,
                 ),
-                _timeLineWidget(),
+                // SizedBox(
+                //   height: 1000,
+                //   child: TimelineWidget())
               ],
             ),
           ),
@@ -307,3 +309,70 @@ class ProjectDetailViewWidget extends StatelessWidget {
     );
   }
 }
+
+
+// class TimelineWidget extends StatelessWidget {
+//   const TimelineWidget({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // Example Data: Customizable
+//     final List<Map<String, dynamic>> phases = [
+//       {"title": "Wire-framing", "startDay": 1, "endDay": 10, "color": Colors.orange},
+//       {"title": "Designing", "startDay": 5, "endDay": 15, "color": Colors.red},
+//       {"title": "Development", "startDay": 15, "endDay": 25, "color": Colors.pink},
+//       {"title": "Testing", "startDay": 20, "endDay": 30, "color": Colors.blue},
+//       {"title": "Deploy", "startDay": 35, "endDay": 40, "color": Colors.green},
+//     ];
+
+//     return Padding(
+//       padding: const EdgeInsets.all(16.0),
+//       child: Column(
+//         children: [
+//           // Horizontal Timeline Axis
+//           Expanded(
+//             child: Stack(
+//               children: [
+//                 Row(
+//                   children: List.generate(
+//                     10, // Number of intervals, customize as needed
+//                     (index) => Expanded(
+//                       child: Column(
+//                         children: [
+//                           const Divider(thickness: 2),
+//                           Text('D-${index * 5}'),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 // Phases as Positioned Bubbles
+//                 ...phases.map((phase) {
+//                   final double start = (phase['startDay'] as int) / 40.0;
+//                   final double end = (phase['endDay'] as int) / 40.0;
+
+//                   return Positioned(
+//                     top: 50, // Adjust based on design
+//                     left: MediaQuery.of(context).size.width * start,
+//                     width: MediaQuery.of(context).size.width * (end - start),
+//                     child: Container(
+//                       height: 40,
+//                       decoration: BoxDecoration(
+//                         color: phase['color'],
+//                         borderRadius: BorderRadius.circular(20),
+//                       ),
+//                       alignment: Alignment.center,
+//                       child: Text(
+//                         phase['title'],
+//                         style: const TextStyle(color: Colors.white),
+//                       ),
+//                     ),
+//                   );
+//                 }).toList(),
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
