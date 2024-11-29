@@ -76,4 +76,7 @@ class AppColors {
   static const Color orangeColor = Color(0xFFFE9E02);
   static const Color faintGreenColor = Color(0xFF5CDA3F);
   static const Color faintGrayColor = Color(0xFFD9D9D9);
+
+  static const Color hintTextColor = Color(0xffAEAEAE);
+  static const Color labelTextColor = Color(0xff262626);
 }

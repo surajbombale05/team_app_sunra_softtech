@@ -111,7 +111,7 @@ class DrawerViewScreen extends StatelessWidget {
               case AppStrings.pendingPayments:
                 return const PendingPaymnetsWidget();
               case AppStrings.quotation:
-                return const SendQuatationWidget();
+                return  SendQuatationWidget();
               case AppStrings.refferalLinks:
                 return RecieviewLinksWidgetScreen();
 
