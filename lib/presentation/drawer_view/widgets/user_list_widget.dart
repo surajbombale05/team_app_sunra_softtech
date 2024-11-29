@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_app/presentation/drawer_view/widgets/client_detail_view_widget.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
 import 'package:team_app/utility/constants/app_images.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
@@ -157,11 +158,16 @@ class _UserListWidgetScreenState extends State<UserListWidgetScreen> {
                                         children: [
                                           Padding(
                                             padding: EdgeInsets.only(right: 10),
-                                            child: TextWidget(
-                                              text: "View Projects",
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600,
-                                              color: AppColors.primarySkyColor,
+                                            child: InkWell(
+                                              onTap: (){
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) => ClientDetailViewWidget(),));
+                                              },
+                                              child: TextWidget(
+                                                text: "View Projects",
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                                color: AppColors.primarySkyColor,
+                                              ),
                                             ),
                                           ),
                                         ],

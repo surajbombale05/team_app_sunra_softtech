@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:team_app/bloc/drawer/drawer_section_cubit.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
 import 'package:team_app/utility/constants/app_images.dart';
+import 'package:team_app/utility/constants/app_strings.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
 import 'package:team_app/utility/widgets/text_widget.dart';
 
@@ -45,14 +48,6 @@ class DashboardScreen extends StatelessWidget {
                             color: AppColors.darkColor,
                           ),
                         ),
-                        // CustomDropdown(
-                        //   flex: 2,
-                        //   items: ["ot1", "ot2", "ot3", "ot4"],
-                        //   onChanged: (value) {
-      
-                        //   },
-                        //   selectedValue: "ot1",
-                        // ),
                       ],
                     ),
                     const SizedBox(height: 10),
@@ -80,7 +75,8 @@ class DashboardScreen extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              _dataViewWidget(AppColors.primarySkyColor, "Calls"),
+                              _dataViewWidget(
+                                  AppColors.primarySkyColor, "Calls"),
                               const SizedBoxWidget(
                                 height: 20,
                               ),
@@ -106,7 +102,9 @@ class DashboardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBoxWidget(height: 10,),
+            const SizedBoxWidget(
+              height: 10,
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -139,13 +137,31 @@ class DashboardScreen extends StatelessWidget {
                           const SizedBoxWidget(
                             height: 4,
                           ),
-                          Row(
-                            
-                            children: [
-                            const TextWidget(text: "View All", fontSize: 10, fontWeight: FontWeight.w300,color:AppColors.primarySkyColor ,),
-                            const SizedBoxWidget(width: 8,),
-                            Image.asset(AppImages.rightArrowImg, width: 20,height: 17,),
-                          ],),
+                          InkWell(
+                            onTap: () {
+                              context
+                                  .read<TabCubit>()
+                                  .setSelectedTab(AppStrings.leadConversation);
+                            },
+                            child: Row(
+                              children: [
+                                const TextWidget(
+                                  text: "View All",
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w300,
+                                  color: AppColors.primarySkyColor,
+                                ),
+                                const SizedBoxWidget(
+                                  width: 8,
+                                ),
+                                Image.asset(
+                                  AppImages.rightArrowImg,
+                                  width: 20,
+                                  height: 17,
+                                ),
+                              ],
+                            ),
+                          ),
                           const SizedBoxWidget(
                             height: 4,
                           ),
@@ -154,31 +170,50 @@ class DashboardScreen extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical:8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.lightColor,
-                                  borderRadius: BorderRadius.circular(12)
-                                ),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(radius: 20,backgroundImage: AssetImage(AppImages.profileIcon),),
-                                    SizedBoxWidget(width: 10,),
-                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColors.lightColor,
+                                      borderRadius: BorderRadius.circular(12)),
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Row(
                                       children: [
-                                      TextWidget(text: "Client Name", fontSize: 12, fontWeight: FontWeight.w500, color: AppColors.darkColor,),
-                                      TextWidget(text: "Project Name", fontSize: 10, fontWeight: FontWeight.w300, color: AppColors.greyColor,),
-                                     ],)
-                                    ],
+                                        CircleAvatar(
+                                          radius: 20,
+                                          backgroundImage:
+                                              AssetImage(AppImages.profileIcon),
+                                        ),
+                                        SizedBoxWidget(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            TextWidget(
+                                              text: "Client Name",
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.darkColor,
+                                            ),
+                                            TextWidget(
+                                              text: "Project Name",
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w300,
+                                              color: AppColors.greyColor,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },)
+                              );
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -191,62 +226,102 @@ class DashboardScreen extends StatelessWidget {
                   flex: 2,
                   child: Column(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.whiteColor,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            children: [
-                             Align(
-                              alignment: Alignment.topRight,
-                              child: Image.asset(AppImages.rightArrowImg , height: 18,width: 22,)),
-                              const TextWidget(text: "234", fontSize: 47,fontWeight: FontWeight.w700,color: AppColors.blackColor,),
-                              const TextWidget(text: "Deals Closed", fontSize: 12, fontWeight: FontWeight.w400,color: AppColors.greyColor,),
-                              //  SizedBoxWidget(height: 15,),
-                             
+                      InkWell(
+                        onTap: () {
+                              context
+                                  .read<TabCubit>()
+                                  .setSelectedTab(AppStrings.leadConversation);
+                            },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.whiteColor,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
                             ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              children: [
+                                Align(
+                                    alignment: Alignment.topRight,
+                                    child: Image.asset(
+                                      AppImages.rightArrowImg,
+                                      height: 18,
+                                      width: 22,
+                                    )),
+                                const TextWidget(
+                                  text: "234",
+                                  fontSize: 47,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.blackColor,
+                                ),
+                                const TextWidget(
+                                  text: "Deals Closed",
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.greyColor,
+                                ),
+                                //  SizedBoxWidget(height: 15,),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       const SizedBoxWidget(
                         height: 10,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.whiteColor,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            children: [
-                             Align(
-                              alignment: Alignment.topRight,
-                              child: Image.asset(AppImages.rightArrowImg , height: 18,width: 22,)),
-                              const TextWidget(text: "12", fontSize: 47,fontWeight: FontWeight.w700,color: AppColors.blackColor,),
-                              const TextWidget(text: "Pending Payments", fontSize: 12, fontWeight: FontWeight.w400,color: AppColors.greyColor,),
-                              //  SizedBoxWidget(height: 15,),
-                             
+                      InkWell(
+                        onTap: (){
+                              context
+                                  .read<TabCubit>()
+                                  .setSelectedTab(AppStrings.pendingPayments);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.whiteColor,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
                             ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              children: [
+                                Align(
+                                    alignment: Alignment.topRight,
+                                    child: Image.asset(
+                                      AppImages.rightArrowImg,
+                                      height: 18,
+                                      width: 22,
+                                    )),
+                                const TextWidget(
+                                  text: "12",
+                                  fontSize: 47,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.blackColor,
+                                ),
+                                const TextWidget(
+                                  text: "Pending Payments",
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.greyColor,
+                                ),
+                                //  SizedBoxWidget(height: 15,),
+                              ],
+                            ),
                           ),
                         ),
                       ),

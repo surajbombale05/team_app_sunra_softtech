@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:team_app/bloc/drawer/drawer_section_cubit.dart';
 import 'package:team_app/presentation/drawer_view/drawer_view.dart';
 import 'package:team_app/presentation/notification_screen/notification_screen.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
 import 'package:team_app/utility/constants/app_images.dart';
+import 'package:team_app/utility/constants/app_strings.dart';
 import 'package:team_app/utility/widgets/add_task_widget.dart';
 import 'package:team_app/utility/widgets/button_widget.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
@@ -464,6 +467,7 @@ class HomeScreen extends StatelessWidget {
           child: InkWell(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => DrawerViewScreen(),));
+              context.read<TabCubit>().setSelectedTab(AppStrings.dashboard);
             },
             child: Container(
               height: 163,
