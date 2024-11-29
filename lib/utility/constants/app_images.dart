@@ -41,5 +41,16 @@ class AppImages {
  static const String downloadIcon = "assets/images/download.png";
 
  static const String pdfImg = "assets/images/Convert_PDF.png";
+ static const String downloadBigImg = "assets/images/dropdown_big_icon.png";
 
-}
+ static const String blinkImg = "assets/images/blink_img.png";
+ static const String vectorImg = "assets/images/vector_img.png";
+
+ // svg icons
+ static const String callSvgIcon = "assets/images/call.svg";
+ static const String messageTextSvgIcon = "assets/images/message-text.svg";
+ static const String notificationBingIcon = "assets/images/noti_bing_svg.svg"; 
+ 
+ static const String isolatedMode = "assets/images/isolation_mode.png";
+
+ }

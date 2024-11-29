@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-           TaskPopup.showCreateTaskPopup(context);
+          TaskPopup.showCreateTaskPopup(context);
         },
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -143,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBoxWidget(
                   height: 10,
                 ),
-                _taskDetailsWidget(),                
+                _taskDetailsWidget(),
               ],
             ),
           ),
@@ -168,129 +168,123 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
- _assignWidget(){
+  _assignWidget() {
     return Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Row(
-                children: [
-                  Image.asset(
-                    AppImages.profileUserImg,
-                    height: 12,
-                    width: 12,
-                  ),
-                  const SizedBoxWidget(
-                    width: 4,
-                  ),
-                  const TextWidget(
-                    text: "Assigne",
-                    color: AppColors.textGrey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
+      children: [
+        Expanded(
+          flex: 2,
+          child: Row(
+            children: [
+              Image.asset(
+                AppImages.profileUserImg,
+                height: 12,
+                width: 12,
               ),
-            ),
-            Expanded(
-                flex: 4,
-                child: Column(
+              const SizedBoxWidget(
+                width: 4,
+              ),
+              const TextWidget(
+                text: "Assigne",
+                color: AppColors.textGrey,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+            flex: 4,
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                          child: const TextWidget(
-                            text: "+",
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor,
-                          ),
-                        ),
-                        Container(
-                          height: 12,
-                          width: 33,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                        ),
-                        
-                      ],
+                    Container(
+                      height: 18,
+                      width: 18,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
+                      child: const TextWidget(
+                        text: "+",
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+                    Container(
+                      height: 12,
+                      width: 33,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
                     ),
                   ],
-                ))
-          ],
-        );
+                ),
+              ],
+            ))
+      ],
+    );
   }
 
-
-
-
- _tagWidget(){
-  return  Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Row(
-                children: [
-                  Image.asset(
-                    AppImages.tagImg,
-                    height: 12,
-                    width: 12,
-                  ),
-                  const SizedBoxWidget(
-                    width: 4,
-                  ),
-                  const TextWidget(
-                    text: "Tags",
-                    color: AppColors.textGrey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
+  _tagWidget() {
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: Row(
+            children: [
+              Image.asset(
+                AppImages.tagImg,
+                height: 12,
+                width: 12,
               ),
-            ),
-            Expanded(
-                flex: 4,
-                child: Column(
+              const SizedBoxWidget(
+                width: 4,
+              ),
+              const TextWidget(
+                text: "Tags",
+                color: AppColors.textGrey,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+            flex: 4,
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                          child: const TextWidget(
-                            text: "+",
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.blackColor,
-                          ),
-                        ),
-                        Container(
-                          height: 12,
-                          width: 33,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: AppColors.lightColor),
-                        ),
-                        
-                      ],
+                    Container(
+                      height: 18,
+                      width: 18,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
+                      child: const TextWidget(
+                        text: "+",
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+                    Container(
+                      height: 12,
+                      width: 33,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.lightColor),
                     ),
                   ],
-                ))
-          ],
-        );
- }
+                ),
+              ],
+            ))
+      ],
+    );
+  }
 
-  
- static Widget _projectWidget() {
+  static Widget _projectWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -322,8 +316,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBoxWidget(width: 10),
             InkWell(
-              onTap: () {
-              },
+              onTap: () {},
               child: const Row(
                 children: [
                   Icon(Icons.add),
@@ -406,8 +399,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBoxWidget(width: 10),
             InkWell(
-              onTap: () {
-              },
+              onTap: () {},
               child: const Row(
                 children: [
                   Icon(Icons.add),
@@ -465,8 +457,12 @@ class HomeScreen extends StatelessWidget {
         Expanded(
           flex: 3,
           child: InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => DrawerViewScreen(),));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DrawerViewScreen(),
+                  ));
               context.read<TabCubit>().setSelectedTab(AppStrings.dashboard);
             },
             child: Container(
@@ -538,10 +534,13 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            InkWell
-            (
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>TaskListScreen() ,));
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TaskListScreen(),
+                    ));
               },
               child: const TextWidget(
                 text: "View All",
@@ -713,8 +712,15 @@ class HomeScreen extends StatelessWidget {
         height: 158,
         width: double.infinity,
         decoration: const BoxDecoration(
-            color: AppColors.darkColor,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: AppColors.darkColor,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          image: DecorationImage(
+            image: AssetImage(
+                AppImages.isolatedMode),
+            fit: BoxFit.contain, 
+            alignment: Alignment.topRight,
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(14.0),
           child: Column(
@@ -738,7 +744,7 @@ class HomeScreen extends StatelessWidget {
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10,
+                  itemCount: 5,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(right: 18.0),

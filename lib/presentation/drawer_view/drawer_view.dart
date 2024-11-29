@@ -32,41 +32,66 @@ class DrawerViewScreen extends StatelessWidget {
     return Scaffold(
       key: _globalKey,
       drawer: _drawerWidget(context),
-      appBar: AppBar(
-        forceMaterialTransparency: true,
-        excludeHeaderSemantics: true,
-        // elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Builder(
-          builder: (context) {
-            return Row(
-              children: [
-                Expanded(
+      appBar: PreferredSize(
+      preferredSize: const Size.fromHeight(kToolbarHeight), // Height of the AppBar
+      child: BlocBuilder<TabCubit, TabState>(
+        builder: (context, state) {
+          if (state is TabInitial) {
+            Color backgroundColor = Colors.white;
+            Color textColor = AppColors.semiDarkColor;
+
+            switch (state.selectedTab) {
+              case AppStrings.pendingPayments || AppStrings.payments:
+                backgroundColor = AppColors.darkColor;
+                textColor = AppColors.whiteColor;
+                break;
+             
+              default:
+                backgroundColor = Colors.transparent;
+                textColor = AppColors.semiDarkColor;
+                break;
+            }
+
+            return AppBar(
+              backgroundColor: backgroundColor,
+              automaticallyImplyLeading: false,
+              forceMaterialTransparency: false,
+              elevation: 0,
+              title: Row(
+                children: [
+                  Expanded(
                     child: Align(
-                        alignment: Alignment.topLeft,
-                        child: InkWell(
-                            onTap: () {
-                              _globalKey.currentState?.openDrawer();
-                            },
-                            child: Image.asset(AppImages.drawerIcon)))),
-                InkWell(
+                      alignment: Alignment.topLeft,
+                      child: InkWell(
+                        onTap: () {
+                          _globalKey.currentState?.openDrawer();
+                        },
+                        child: Image.asset(AppImages.drawerIcon, color: textColor,),
+                      ),
+                    ),
+                  ),
+                  InkWell(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const NotificationScreen(),
-                          ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NotificationScreen(),
+                        ),
+                      );
                     },
-                    child: Image.asset(AppImages.notificationsIcon)),
-                const SizedBoxWidget(
-                  width: 12,
-                ),
-                Image.asset(AppImages.profileIcon),
-              ],
+                    child: Image.asset(AppImages.notificationsIcon, color: textColor,),
+                  ),
+                  const SizedBoxWidget(width: 12),
+                  Image.asset(AppImages.profileIcon),
+                ],
+              ),
             );
           }
-        ),
+          return AppBar(); // Fallback AppBar if state is not TabInitial
+        },
       ),
+    ),
+    // body: PendingPaymnetsWidget(),
       body: BlocBuilder<TabCubit, TabState>(
         builder: (context, state) {
           if (state is TabInitial) {
