@@ -4,14 +4,28 @@ import 'package:team_app/bloc/drawer/drawer_section_cubit.dart';
 import 'package:team_app/utility/constants/app_colors.dart';
 import 'package:team_app/utility/constants/app_images.dart';
 import 'package:team_app/utility/constants/app_strings.dart';
+import 'package:team_app/utility/widgets/dropdown_widget.dart';
 import 'package:team_app/utility/widgets/sizedbox_widget.dart';
 import 'package:team_app/utility/widgets/text_widget.dart';
 
-import '../../../utility/widgets/dropdown_button_widget.dart';
-
 class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+  DashboardScreen({super.key});
 
+  static List<String> months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+  String selectedMonth = "";
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -36,10 +50,10 @@ class DashboardScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 4,
                           child: TextWidget(
                             text: "Work Performance",
@@ -47,6 +61,17 @@ class DashboardScreen extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: AppColors.darkColor,
                           ),
+                        ),
+                        SizedBoxWidget(
+                          width: 127,
+                          height: 32,
+                          child: CustomDropdownWidget(
+                              items: months,
+                              hintText: "Month",
+                              color: AppColors.lightTextColor,
+                              onChanged: (String value) {
+                                selectedMonth = value;
+                              }),
                         ),
                       ],
                     ),
@@ -228,10 +253,10 @@ class DashboardScreen extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                              context
-                                  .read<TabCubit>()
-                                  .setSelectedTab(AppStrings.leadConversation);
-                            },
+                          context
+                              .read<TabCubit>()
+                              .setSelectedTab(AppStrings.leadConversation);
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.whiteColor,
@@ -278,10 +303,10 @@ class DashboardScreen extends StatelessWidget {
                         height: 10,
                       ),
                       InkWell(
-                        onTap: (){
-                              context
-                                  .read<TabCubit>()
-                                  .setSelectedTab(AppStrings.pendingPayments);
+                        onTap: () {
+                          context
+                              .read<TabCubit>()
+                              .setSelectedTab(AppStrings.pendingPayments);
                         },
                         child: Container(
                           decoration: BoxDecoration(

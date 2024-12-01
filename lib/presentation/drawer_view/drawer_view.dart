@@ -33,71 +33,78 @@ class DrawerViewScreen extends StatelessWidget {
       key: _globalKey,
       drawer: _drawerWidget(context),
       appBar: PreferredSize(
-      preferredSize: const Size.fromHeight(kToolbarHeight), // Height of the AppBar
-      child: BlocBuilder<TabCubit, TabState>(
-        builder: (context, state) {
-          if (state is TabInitial) {
-            Color backgroundColor = Colors.white;
-            Color textColor = AppColors.semiDarkColor;
+        preferredSize:
+            const Size.fromHeight(kToolbarHeight), // Height of the AppBar
+        child: BlocBuilder<TabCubit, TabState>(
+          builder: (context, state) {
+            if (state is TabInitial) {
+              Color backgroundColor = Colors.white;
+              Color textColor = AppColors.semiDarkColor;
 
-            switch (state.selectedTab) {
-              case AppStrings.pendingPayments || AppStrings.payments:
-                backgroundColor = AppColors.darkColor;
-                textColor = AppColors.whiteColor;
-                break;
-             
-              default:
-                backgroundColor = Colors.transparent;
-                textColor = AppColors.semiDarkColor;
-                break;
-            }
+              switch (state.selectedTab) {
+                case AppStrings.pendingPayments || AppStrings.payments:
+                  backgroundColor = AppColors.darkColor;
+                  textColor = AppColors.whiteColor;
+                  break;
 
-            return AppBar(
-              backgroundColor: backgroundColor,
-              automaticallyImplyLeading: false,
-              forceMaterialTransparency: false,
-              elevation: 0,
-              title: Row(
-                children: [
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: InkWell(
-                        onTap: () {
-                          _globalKey.currentState?.openDrawer();
-                        },
-                        child: Image.asset(AppImages.drawerIcon, color: textColor,),
+                default:
+                  backgroundColor = Colors.transparent;
+                  textColor = AppColors.semiDarkColor;
+                  break;
+              }
+
+              return AppBar(
+                backgroundColor: backgroundColor,
+                automaticallyImplyLeading: false,
+                forceMaterialTransparency: false,
+                elevation: 0,
+                title: Row(
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: InkWell(
+                          onTap: () {
+                            _globalKey.currentState?.openDrawer();
+                          },
+                          child: Image.asset(
+                            AppImages.drawerIcon,
+                            color: textColor,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const NotificationScreen(),
-                        ),
-                      );
-                    },
-                    child: Image.asset(AppImages.notificationsIcon, color: textColor,),
-                  ),
-                  const SizedBoxWidget(width: 12),
-                  Image.asset(AppImages.profileIcon),
-                ],
-              ),
-            );
-          }
-          return AppBar(); // Fallback AppBar if state is not TabInitial
-        },
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const NotificationScreen(),
+                          ),
+                        );
+                      },
+                      child: Image.asset(
+                        AppImages.notificationsIcon,
+                        color: textColor,
+                      ),
+                    ),
+                    const SizedBoxWidget(width: 12),
+                    Image.asset(AppImages.profileIcon),
+                  ],
+                ),
+              );
+            }
+            return AppBar(); // Fallback AppBar if state is not TabInitial
+          },
+        ),
       ),
-    ),
-    // body: PendingPaymnetsWidget(),
+      // body: PendingPaymnetsWidget(),
       body: BlocBuilder<TabCubit, TabState>(
         builder: (context, state) {
           if (state is TabInitial) {
             switch (state.selectedTab) {
               case AppStrings.dashboard:
-                return const DashboardScreen();
+                return DashboardScreen();
               case AppStrings.leadConversation:
                 return const LeadConversationScreen();
               case AppStrings.closedDeals:
@@ -107,11 +114,11 @@ class DrawerViewScreen extends StatelessWidget {
               case AppStrings.targets:
                 return const YourTargetWidget();
               case AppStrings.payments:
-                return const PaymentsSectionWidget();
+                return PaymentsSectionWidget();
               case AppStrings.pendingPayments:
-                return const PendingPaymnetsWidget();
+                return  PendingPaymnetsWidget();
               case AppStrings.quotation:
-                return  SendQuatationWidget();
+                return SendQuatationWidget();
               case AppStrings.refferalLinks:
                 return RecieviewLinksWidgetScreen();
 

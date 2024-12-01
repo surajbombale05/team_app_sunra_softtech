@@ -8,8 +8,22 @@ import 'package:team_app/utility/widgets/sizedbox_widget.dart';
 import 'package:team_app/utility/widgets/text_widget.dart';
 
 class PaymentsSectionWidget extends StatelessWidget {
-  const PaymentsSectionWidget({super.key});
-
+  PaymentsSectionWidget({super.key});
+  static List<String> months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+  String selectedMonth = "";
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -124,19 +138,17 @@ class PaymentsSectionWidget extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       color: AppColors.darkColor,
                     ),
-                    // Uncomment the dropdown code when implemented
-                    // CustomDropdown(
-                    //   items: filters,
-                    //   selectedItem: selectedFilter,
-                    //   onChanged: (value) {
-                    //     setState(() {
-                    //       selectedFilter = value!;
-                    //     });
-                    //   },
-                    // ),
-  
-                   
-
+                    SizedBoxWidget(
+                      width: 127,
+                      height: 35,
+                      child: CustomDropdownWidget(
+                          items: months,
+                          hintText: "Month",
+                          color: AppColors.lightTextColor,
+                          onChanged: (String value) {
+                            selectedMonth = value;
+                          }),
+                    ),
                   ],
                 ),
                 const SizedBoxWidget(height: 10),

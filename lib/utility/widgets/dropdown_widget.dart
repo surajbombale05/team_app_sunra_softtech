@@ -9,7 +9,7 @@ class CustomDropdownWidget extends StatefulWidget {
     Key? key,
     required this.items,
     required this.hintText,
-    required this.onChanged,
+    required this.onChanged, required Color color,
   }) : super(key: key);
 
   @override
