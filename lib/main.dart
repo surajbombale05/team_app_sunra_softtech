@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:team_app/presentation/chat_section/chat_view.dart';
 import 'package:team_app/presentation/drawer_view/widgets/dashboard_view.dart';
 import 'package:team_app/presentation/home_screen/home_screen.dart';
 import 'package:team_app/presentation/notification_screen/detail_notification_screen.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: DrawerViewScreen(),
+      home: SplashScreen(),
     );
   }
 }

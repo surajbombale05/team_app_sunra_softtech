@@ -51,6 +51,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       child: TextFormField(
         validator: widget.validator,
         controller: widget.controller,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.rounded ?? 0),

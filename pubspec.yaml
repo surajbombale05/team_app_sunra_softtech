@@ -38,6 +38,8 @@ dependencies:
   percent_indicator: ^4.2.4
   flutter_bloc: ^8.1.6
   flutter_svg: ^2.0.16
+  http: ^1.2.2
+  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:

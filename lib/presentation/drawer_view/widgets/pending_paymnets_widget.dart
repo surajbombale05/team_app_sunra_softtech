@@ -48,9 +48,9 @@ class PendingPaymnetsWidget extends StatelessWidget {
                       alignment: Alignment.bottomLeft,
                       child: Image.asset(
                         AppImages
-                            .blinkImg, // Replace with your left image asset
-                        fit: BoxFit.contain, // Adjust the size as needed
-                        height: 100, // Set desired height
+                            .blinkImg,
+                        fit: BoxFit.contain,
+                        height: 100,
                       ),
                     ),
                     Align(

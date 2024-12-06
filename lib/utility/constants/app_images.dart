@@ -50,7 +50,9 @@ class AppImages {
  static const String callSvgIcon = "assets/images/call.svg";
  static const String messageTextSvgIcon = "assets/images/message-text.svg";
  static const String notificationBingIcon = "assets/images/noti_bing_svg.svg"; 
- 
+ static const String arrowLeftSvgIcon = "assets/images/arrow-left.svg";
+
  static const String isolatedMode = "assets/images/isolation_mode.png";
+
 
  }
